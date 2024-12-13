@@ -37,8 +37,3 @@ env/*
 # Dist
 node_modules
 dist/
-
-.vscode
-
-apps/*
-!apps/admin/

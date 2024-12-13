@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import Header from "./components/header";
+import MessageList from "./components/message-list";
+import MessageInput from "./components/message-input";
 
-export default function Home() {
-
+export default function Chat() {
     return (
-        <div className="flex space-x-2">
-            <Link to="/admin">Admin</Link>
-            <Link to="/docs">Docs</Link>
-        </div>
+        <ResizablePanelGroup className="bg-gray-200/20" direction="vertical">
+            <ResizablePanel>
+                <Header />
+                <MessageList />
+            </ResizablePanel>
+            <ResizableHandle />
+            <ResizablePanel defaultSize={20} minSize={10} maxSize={35}>
+                <MessageInput />
+            </ResizablePanel>
+        </ResizablePanelGroup>
     );
 }

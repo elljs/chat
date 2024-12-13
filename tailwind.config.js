@@ -58,6 +58,14 @@ module.exports = withTV({
 					border: "hsl(var(--sidebar-border))",
 					ring: "hsl(var(--sidebar-ring))",
 				},
+				moment: {
+					foreground: "hsl(var(--primary-foreground))",
+					primary: "#576B95",
+				},
+				market: {
+					foreground: "hsl(var(--primary-foreground))",
+					primary: "#F9A856",
+				},
 			},
 			borderRadius: {
 				lg: "var(--radius)",
@@ -107,7 +115,17 @@ module.exports = withTV({
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 			},
+			boxShadow: {
+				custom: "0 8px 16px rgba(0, 0, 0, 0.15)",
+			},
 		},
 	},
-	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("@tailwindcss/typography"),
+		require("@vidstack/react/tailwind.cjs")({
+			selector: ".media-player",
+			prefix: "media",
+		}),
+	],
 });

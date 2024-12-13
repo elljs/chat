@@ -1,6 +1,5 @@
 import AILayout from "@/layouts/ai";
-import DocumentLayout from "@/layouts/document";
-import HomeLayout from "@/layouts/home";
+import ChatLayout from "@/layouts/chat";
 import MainLayout from "@/layouts/main";
 import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
@@ -8,7 +7,6 @@ import NotFoundError from "@/pages/errors/not-found-error";
 import UnauthorisedError from "@/pages/errors/unauthorised-error";
 import {
 	Bot,
-	CirclePlay,
 	Cpu,
 	FilePenLine,
 	FolderTree,
@@ -140,30 +138,27 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/",
-		element: <HomeLayout />,
+		element: <ChatLayout />,
 		children: [
 			{
 				index: true,
 				lazy: async () => ({
 					Component: (await import("@/pages/home")).default,
 				})
+			},
+			{
+				path: '/knowledge-base',
+				lazy: async () => ({
+					Component: (await import("@/pages/knowledge-base")).default,
+				})
+			},
+			{
+				path: '/market',
+				lazy: async () => ({
+					Component: (await import("@/pages/market")).default,
+				})
 			}
 		]
-	},
-	{
-		path: "/docs",
-		name: "文档",
-		element: <DocumentLayout />,
-		children: [
-			{
-				index: true,
-				name: "快速开始",
-				icon: <CirclePlay />,
-				lazy: async () => ({
-					Component: (await import("@/pages/docs/index.mdx")).default,
-				}),
-			},
-		],
 	},
 	{
 		path: "/admin",

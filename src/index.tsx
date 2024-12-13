@@ -1,11 +1,17 @@
 import { ModalProvider } from "@/components/custom/modal-provider";
 import { ThemeProvider } from "@/components/custom/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import 'dayjs/locale/zh-cn';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
+import dayjs from "dayjs";
 
 import "./index.css";
+
+dayjs.locale('zh-cn');
+dayjs.extend(relativeTime);
 
 const rootEl = document.getElementById("root");
 if (rootEl) {
